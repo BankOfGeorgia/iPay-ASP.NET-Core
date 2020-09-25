@@ -24,15 +24,17 @@ namespace IpayDemo.Net
     public class IpayService : IIpayService
     {
         private readonly IpayConfiguration configuration;
+        private readonly IHttpClientFactory httpClientFactory;
 
-        public IpayService(IpayConfiguration configuration)
+        public IpayService(IpayConfiguration configuration, IHttpClientFactory httpClientFactory)
         {
             this.configuration = configuration;
+            this.httpClientFactory = httpClientFactory;
         }
 
         public async Task<CompletedOrder> MakeOrder(Intent intent, List<Item> items, string redirectUrl, string locale, string orderId)
         {
-            var client = new HttpClient();
+            var httpClient = httpClientFactory.CreateClient();
 
             var tokenRequest = new ClientCredentialsTokenRequest
             {
@@ -42,7 +44,7 @@ namespace IpayDemo.Net
                 ClientCredentialStyle = ClientCredentialStyle.AuthorizationHeader
             };
 
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(tokenRequest);
+            var tokenResponse = await httpClient.RequestClientCredentialsTokenAsync(tokenRequest);
 
             if (tokenResponse.IsError)
             {
@@ -64,7 +66,7 @@ namespace IpayDemo.Net
                 ShowShopOrderIdOnExtract = showShopOrderIdInStatement
             };
 
-            var httpClient = new HttpClient();
+            var httpClient = httpClientFactory.CreateClient();
 
             httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
             var responseMessage = await httpClient.PostAsJsonAsync($"{configuration.BaseUrl}checkout/orders", order);
