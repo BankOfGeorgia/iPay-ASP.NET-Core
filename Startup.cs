@@ -24,6 +24,11 @@ namespace IpayDemo.Net
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            
+            var config = new IpayConfiguration();
+            Configuration.Bind("Ipay", config);
+            services.AddSingleton(config);
+            services.AddScoped<IIpayService, IpayService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

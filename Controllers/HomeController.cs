@@ -1,21 +1,19 @@
-﻿using System;
+﻿using IpayDemo.Net.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using IpayDemo.Net.Models;
 
 namespace IpayDemo.Net.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IIpayService ipayService;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IIpayService ipayService)
         {
-            _logger = logger;
+            this.ipayService = ipayService;
         }
 
         public IActionResult Index()
@@ -35,14 +33,55 @@ namespace IpayDemo.Net.Controllers
         }
 
         [HttpPost]
-        public IActionResult InitiatePayment()
+        public async Task<IActionResult> InitiatePayment()
         {
-            throw new NotImplementedException();
+            var order = await ipayService.MakeOrder(Intent.Capture, new List<Item>
+            {
+                new Item
+                {
+                    Amount = 100,
+                    Description = "Item 1",
+                    ProductID = 11111,
+                    Quantity = 1
+                },
+                new Item
+                {
+                    Amount = 50,
+                    Description = "Item 2",
+                    ProductID = 11112,
+                    Quantity = 1
+                }
+            }, "https://demo.ipay.ge", "ka", "123465");
+
+            var redirect = order.Links.Single(link => link.Method == Method.Redirect);
+
+            return Redirect(redirect.Href);
         }
 
-        public IActionResult InitiateInstallment()
+        [HttpPost]
+        public async Task<IActionResult> InitiateInstallment()
         {
-            throw new NotImplementedException();
+            var order = await ipayService.MakeOrder(Intent.Loan, new List<Item>
+            {
+                new Item
+                {
+                    Amount = 100,
+                    Description = "Item 1",
+                    ProductID = 11111,
+                    Quantity = 1
+                },
+                new Item
+                {
+                    Amount = 50,
+                    Description = "Item 2",
+                    ProductID = 11112,
+                    Quantity = 1
+                }
+            }, "https://demo.ipay.ge", "ka", "123465");
+
+            var redirect = order.Links.Single(link => link.Method == Method.Redirect);
+
+            return Redirect(redirect.Href);
         }
     }
 }
