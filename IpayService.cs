@@ -34,6 +34,13 @@ namespace IpayDemo.Net
 
         public async Task<CompletedOrder> MakeOrder(Intent intent, List<Item> items, string redirectUrl, string locale, string orderId)
         {
+            var tokenResponse = await GetToken();
+
+            return await PlaceOrder(tokenResponse.AccessToken, intent, redirectUrl, locale, orderId, true, items);
+        }
+
+        private async Task<TokenResponse> GetToken()
+        {
             var httpClient = httpClientFactory.CreateClient();
 
             var tokenRequest = new ClientCredentialsTokenRequest
@@ -51,8 +58,7 @@ namespace IpayDemo.Net
                 throw new Exception(tokenResponse.ErrorDescription);
             }
 
-            var response = await PlaceOrder(tokenResponse.AccessToken, intent, redirectUrl, locale, orderId, true, items);
-            return response;
+            return tokenResponse;
         }
 
         private async Task<CompletedOrder> PlaceOrder(string token, Intent intent, string redirectUrl, string locale, string shopOrderId, bool showShopOrderIdInStatement, List<Item> items)
