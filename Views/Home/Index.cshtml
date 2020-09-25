@@ -1,8 +1,59 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="ge">
+<head>
+    <meta charset="UTF-8">
+    <title>IPay Live Demo</title>
+    <link rel="stylesheet" href="~/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">დემო მარკეტი</div>
+        </div>
+        <div class="navigation">
+            <div class="navs">
+                <ul>
+                    <li><a href="#">მთავარი</a></li>
+                    <li><a href="#">სმარტფონები</a></li>
+                    <li><a href="#">საოჯახო ტექნიკა</a></li>
+                    <li><a href="#">წვრილი ტექნიკა</a></li>
+                    <li><a href="#">კომპიუტერები</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="content">
+            <div class="images-container">
+                <div class="main-image">
+                    <img src="/images/product1.png">
+                </div>
+                <div class="thumbs">
+                    <img src="~/images/product2.png">
+                    <img src="~/images/product3.png">
+                    <img src="~/images/product4.png">
+                    <img src="~/images/product5.png">
+                </div>
+            </div>
+            <div class="description">
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                <div class="product-title">ტელევიზორი</div>
+                <div class="product-price">150.00 ₾</div>
+                <textarea rows="4" readonly="readonly" name="description" class="description-text">შემთხვევითად გენერირებული ტექსტი ეხმარება დიზაინერებს და ტიპოგრაფიული ნაწარმის შემქმნელებს, რეალურთან მაქსიმალურად მიახლოებული შაბლონი წარუდგინონ შემფასებელს.</textarea>
+                <div>
+                    <form method="post" asp-action="InitiatePayment">
+                        <button class="bog-logo-in-long" name="pay" value="pay">
+                            <div class="bog-logo-in-long-left"><img src="~/images/bog-logo.png"> <span>ყიდვა</span></div>
+                            <img src="~/images/cards.png">
+                        </button>
+                    </form>
+                    <br />
+                    <form method="post" asp-action="InitiateInstallment">
+                        <button class="bog-logo-in-long" name="installment" value="installment">
+                            <div class="bog-logo-in-long-left"><img src="~/images/bog-logo.png"> <span>განვადება</span></div>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

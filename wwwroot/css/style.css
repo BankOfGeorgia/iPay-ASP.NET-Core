@@ -1,0 +1,214 @@
+﻿@font-face {
+    font-family: BOG2018HeadlineSemiBold;
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018Headline-SemiBold.eot');
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018Headline-SemiBold.woff2') format('woff2'), url('https://webstatic.bog.ge/fonts/bog2018/BOG2018Headline-SemiBold.woff1') format('woff');
+}
+
+@font-face {
+    font-family: BOG2018SemiBold;
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-SemiBold.woff');
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-SemiBold.woff2') format('woff2'), url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: BOG2018Medium;
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Medium.eot');
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Medium.woff2') format('woff2'), url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: BOG2018SemiBold;
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Bold.eot');
+    src: url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Bold.woff2') format('woff2'), url('https://webstatic.bog.ge/fonts/bog2018/BOG2018-Bold.woff') format('woff');
+}
+
+body {
+    background-color: #f5f5f5;
+    margin: 0 auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 auto;
+    margin: 0 auto;
+}
+
+.header {
+    height: 90px;
+    width: 960px;
+}
+
+.logo {
+    font-family: BOG2018HeadlineSemiBold;
+    color: #333333;
+    font-size: 20px;
+    padding-top: 31px;
+}
+
+.menu {
+    font-family: BOG2018HeadlineSemiBold;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.navigation {
+    display: flex;
+    flex-direction: column;
+    height: 60px;
+    background-color: #646464;
+    width: 100%;
+    align-items: center;
+}
+
+.navs {
+    display: flex;
+    justify-content: space-between;
+    width: 960px;
+    padding-top: 5px;
+}
+
+    .navs > ul {
+        padding-inline-start: 0;
+    }
+
+        .navs > ul > li {
+            display: inline;
+            height: 24px;
+            width: 90px;
+            color: #ffffff;
+            margin-right: 70px;
+        }
+
+a {
+    font-family: BOG2018HeadlineSemiBold;
+    font-size: 14px;
+    color: #ffffff;
+    text-decoration: none;
+}
+
+
+.content {
+    display: flex;
+    flex-direction: row;
+    width: 960px;
+    padding-top: 46px;
+}
+
+.images-container {
+    display: flex;
+    flex-direction: column;
+    width: 410px;
+}
+
+.main-image {
+    padding-bottom: 13px;
+}
+
+.thumbs {
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    padding: 18px 0 0 50px;
+}
+
+
+.product-title {
+    padding-top: 17px;
+    font-family: BOG2018HeadlineSemiBold;
+    font-size: 20px;
+    color: #333333;
+}
+
+.product-price {
+    padding-top: 24px;
+    font-family: BOG2018SemiBold;
+    font-size: 24px;
+    color: #fc6719;
+}
+
+.description-text {
+    background: 0;
+    border: 0;
+    width: 100%;
+    overflow: hidden;
+    outline: 0;
+    height: auto;
+    resize: none;
+    scroll: none;
+    padding-top: 34px;
+    padding-bottom: 40px;
+    font-family: BOG2018Medium;
+    font-size: 14px;
+    color: #646464;
+}
+
+button {
+    padding: 0px;
+}
+
+.bog-logo-in-long {
+    border: 0;
+    width: 327px;
+    height: 59px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 4px 0px;
+    background-color: #fc6719;
+    background-image: linear-gradient(to right, #FC6719, #FF9E1A 50%);
+    cursor: pointer;
+    color: #ffffff;
+    font-family: MarkGEO, sans-serif;
+    font-size: 14px;
+    user-select: none;
+    font-weight: 500;
+    box-sizing: border-box;
+    border-radius: 4px;
+    transition: opacity 200ms ease-in-out 0s, color 200ms ease-in-out 0s, background-color 200ms ease-in-out 0s, box-shadow 200ms ease-in-out 0s;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+    .bog-logo-in-long:hover {
+        background-image: linear-gradient(to right, #f68448, #f9af4d 50%);
+        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 8px 0px;
+    }
+
+    .bog-logo-in-long:focus {
+        outline: 0;
+    }
+
+.bog-logo-in-long-left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 130px;
+    margin-left: 20px;
+}
+
+.bog-logo-in-long img {
+    margin-right: 5px;
+}
+
+.bog-logo-in-long span {
+    font-family: BOG2018SemiBold;
+    font-size: 16px;
+    text-align: left;
+    color: #ffffff;
+}
+
+.ipay-button-text {
+    width: 28px;
+    margin-left: 82px;
+    font-family: BOG2018SemiBold;
+    font-size: 16px;
+    text-align: left;
+    color: #ffffff;
+}

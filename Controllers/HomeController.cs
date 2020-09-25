@@ -33,5 +33,16 @@ namespace IpayDemo.Net.Controllers
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+        [HttpPost]
+        public IActionResult InitiatePayment()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IActionResult InitiateInstallment()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
